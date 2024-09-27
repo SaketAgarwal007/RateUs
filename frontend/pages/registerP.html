@@ -14,46 +14,67 @@
         
       </header>
     <div class="wrapper">
-        <form action="">
+        <form action="" id="signupForm">
             <h1>Registration Form</h1>
-
+            <input type="hidden" name="action" value="register">  <!-- Action for register -->
             <div class="input_box">
                 <div class="input-field">
-                    <input type="text" placeholder="    Organization Name" required>
-                    <i class="fa-solid fa-house-user" style="color:  rgb(94, 92, 92);"></i>
-                </div>
-                <div class="input-field">
-                    <input type="text" placeholder="    Username" required>
+                    <input type="text" placeholder="    Username" name="name" required>
                     <i class="fa-solid fa-user" style="color: rgb(94, 92, 92);"></i>
                 </div>
-            </div>
-
-            <div class="input_box">
                 <div class="input-field">
-                    <input type="email" placeholder="    Email" required>
+                    <input type="email" placeholder="    Email" name="email" required>
                     <i class="fa-solid fa-envelope" style="color: rgb(94, 92, 92);"></i>
                 </div>
-                <div class="input-field">
-                    <input type="text" placeholder="    Phone Number" required>
-                    <i class="fa-solid fa-phone" style="color: rgb(94, 92, 92);"></i>
-                </div>
             </div>
 
             <div class="input_box">
                 <div class="input-field">
-                    <input type="file" placeholder="Upload Logo " required>
-                    <i class="fa-solid fa-file-arrow-up" style="color: rgb(94, 92, 92);"></i>
+                    <input type="text" placeholder="    Phone Number" name="contact" required>
+                    <i class="fa-solid fa-phone" style="color: rgb(94, 92, 92);"></i>
                 </div>
                 <div class="input-field">
-                    <input type="file" placeholder="Upload Menu" required>
-                    <i class="fa-solid fa-file-arrow-up" style="color: rgb(94, 92, 92);"></i>
+                    <input type="text" placeholder="    Password" name="password" required>
+                    <i class="fa-solid fa-house-user" style="color:  rgb(94, 92, 92);"></i>
                 </div>
             </div>
-
             <label><input type="checkbox"> I hereby declare that the above information provided is true and correct</label>
 
-            <button type="submit" class="btn">Register</button>
+            <button type="submit" name="submit" class="btn">Register</button>
         </form>
     </div>
+
+    <p id="message"></p>
+
+
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+
+            // Send data to the backend
+            fetch('../../backend/public/index.php', {  // Update with actual API path
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle response
+                if (data.status === 'success') {
+                    document.getElementById('message').textContent = 'Sign Up Successful!';
+                } else {
+                    document.getElementById('message').textContent = 'Sign Up Failed: ' + data.message;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('message').textContent = 'An error occurred during signup.';
+            });
+        });
+    </script>
+
 </body>
 </html>
