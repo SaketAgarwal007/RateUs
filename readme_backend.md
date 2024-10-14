@@ -1,7 +1,7 @@
 
 
-## Add Item form
-### forntend code should contain
+### Add Item form
+#### frontend code should contain
 ```
 <form action="your_item_controller_route.php" method="POST">
     <input type="hidden" name="action" value="login">
@@ -22,6 +22,6 @@
     <button type="submit">Submit</button>
 </form>
 ```
--- name=items[0][name]
--- organization_id value="make a get request"
--- input type="hidden" name="action" value="addItem"
+    name=items[0][name]
+    organization_id value="make a get request"
+    input type="hidden" name="action" value="addItem"
