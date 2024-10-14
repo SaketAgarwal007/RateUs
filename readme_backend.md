@@ -22,6 +22,6 @@
     <button type="submit">Submit</button>
 </form>
 ```
--- name=items[0][name]
--- organization_id value="make a get request"
--- input type="hidden" name="action" value="addItem"
+    name=items[0][name]
+    organization_id value="make a get request"
+    input type="hidden" name="action" value="addItem"
