@@ -4,10 +4,10 @@ USE RateUs;
 
 CREATE TABLE Organisation(
     ID varchar(10) PRIMARY KEY,
-    Org_Name varchar(200),
+    Name varchar(200),
     Owner_id varchar(10),
     Logo varchar(100),
-    Org_Address varchar(200),
+    Address varchar(200),
     Listed_On DATE DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -31,21 +31,21 @@ CREATE TABLE Reviews (
     Review_ID VARCHAR(10) PRIMARY KEY,
     Org_ID VARCHAR(10),
     Item_ID VARCHAR(10),
-    Review VARCHAR(100)
+    Review VARCHAR(1000)
 );
 
 CREATE TABLE Ratings (
     Rating_ID VARCHAR(10) PRIMARY KEY,
     Item_ID VARCHAR(10),
-    Rating VARCHAR(10)
+    Rating DECIMAL(3,1) CHECK (Rating >= 1 AND Rating <= 10)
 );
 
 CREATE TABLE Aggregate_Ratings (
     Item_ID VARCHAR(10) PRIMARY KEY,
-    Rating VARCHAR(10)
+    Rating DECIMAL(3,1) CHECK (Rating >= 1 AND Rating <= 10)
 );
 
 CREATE TABLE Sentimental_Scores (
     Review_ID VARCHAR(10) PRIMARY KEY,
-    Sentimental_Score VARCHAR(100)
+    Sentimental_Score INT CHECK (Sentimental_Score IN (0, 1))
 );
