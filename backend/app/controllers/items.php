@@ -3,7 +3,7 @@ require_once "../confiq/confiq.php";
 require_once "../session/session.php";
 require_once "../app/models/items.php";
 
-class ItemController {
+class itemController {
     private $itemModel;
 
     public function __construct($mysqli) {
@@ -26,6 +26,9 @@ class ItemController {
                     $item_id=create_unique_id();
                     $this->itemModel->addItem($item_id,$organizationId, $itemName);
                 }
+                echo json_encode([
+                    'status'=>'success'
+                ]);
             }
         }
     }
