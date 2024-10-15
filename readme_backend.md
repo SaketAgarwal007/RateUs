@@ -2,6 +2,8 @@
 
 ### Add Item form
 #### frontend code should contain
+#### route ../../backend/public/index.php
+#### method : POST
 ```
 <form action="your_item_controller_route.php" method="POST">
     <input type="hidden" name="action" value="login">

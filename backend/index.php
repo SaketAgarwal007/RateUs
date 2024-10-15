@@ -1,3 +1,10 @@
+<?php
+require_once 'confiq/confiq.php';
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -4,6 +4,8 @@ require_once "../session/session.php";
 require_once "../app/controllers/user.php";
 require_once "../app/controllers/organization.php";
 require_once "../app/controllers/items.php";
+require_once "../app/controllers/review.php";
+require_once "../app/controllers/rating.php";
 
 
 $controller="";
@@ -23,6 +25,12 @@ elseif(isset($_POST['action'])){
     }
     elseif($action=='addItem'){
         $controller='items';  // Route to ItemsController
+    }
+    elseif($action=='addReview'){
+        $controller='reviews';
+    }
+    elseif($action=='addRating'){
+        $controller='rating';
     }
 }
 
@@ -48,6 +56,18 @@ switch($controller) {
         $itemController=new itemController($mysqli);
         if($action=='addItem'){
             $itemController->itemMethods();
+        }
+        break;
+    case 'reviews':
+        $reviewsController = new reviewsController($mysqli);
+        if($action=='addReview'){
+            $reviewsController->reviewMethods();
+        }
+        break;
+    case 'rating':
+        $ratingController = new ratingController($mysqli);
+        if($action=='addRating'){
+            $ratingController->ratingMethods();
         }
         break;
     default:
