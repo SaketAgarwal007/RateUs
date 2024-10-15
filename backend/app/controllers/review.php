@@ -13,9 +13,10 @@ class reviewsController{
     public function reviewMethods(){
         if($_SERVER['REQUEST_METHOD']=='POST'){
             $review_id=create_unique_id();
+            $org_id=$_POST['org_id'];
             $item_id=$_POST['item_id'];
             $review=$_POST['review'];
-            if($this->reviewMod->addReview($review_id,$item_id,$review)){
+            if($this->reviewMod->addReview($review_id,$org_id,$item_id,$review)){
                 echo json_encode([
                     'status'=>'success'
                 ]);
