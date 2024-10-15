@@ -31,21 +31,27 @@ CREATE TABLE Reviews (
     Review_ID VARCHAR(10) PRIMARY KEY,
     Org_ID VARCHAR(10),
     Item_ID VARCHAR(10),
-    Review VARCHAR(1000)
+    Review VARCHAR(1000),
+    Sentimental_Score DECIMAL(10,5)
 );
 
 CREATE TABLE Ratings (
     Rating_ID VARCHAR(10) PRIMARY KEY,
+    Org_ID VARCHAR(10),
     Item_ID VARCHAR(10),
-    Rating DECIMAL(3,1) CHECK (Rating >= 1 AND Rating <= 10)
+    Rating DECIMAL(10,5)
 );
 
 CREATE TABLE Aggregate_Ratings (
     Item_ID VARCHAR(10) PRIMARY KEY,
-    Rating DECIMAL(3,1) CHECK (Rating >= 1 AND Rating <= 10)
+    Org_ID VARCHAR(10),
+    Rating_Score DECIMAL(10,5), 
+    Review_Score DECIMAL(10,5),
+    Combined_Score DECIMAL(10,5)
 );
 
-CREATE TABLE Sentimental_Scores (
-    Review_ID VARCHAR(10) PRIMARY KEY,
-    Sentimental_Score INT CHECK (Sentimental_Score IN (0, 1))
+CREATE TABLE Rankings (
+    Item_ID VARCHAR(10) PRIMARY KEY,
+    Org_ID VARCHAR(10),
+    Weighted_Score DECIMAL(10,2)
 );

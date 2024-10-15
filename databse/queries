@@ -15,16 +15,16 @@ WHERE Name LIKE 'search%';
 INSERT INTO Items (ID, Item_Name, Org_ID) 
 VALUES ('Enter_ItemsID', 'Enter_ItemName', 'Enter_OrgID');
 
-INSERT INTO Reviews (Review_ID, Org_ID, Item_ID, Review) 
-VALUES ('Enter_ReviewID', 'Enter_OrgID', 'Enter_ItemID', 'Enter_Review');
+INSERT INTO Reviews (Review_ID, Org_ID, Item_ID, Review, Sentimental_Score) 
+VALUES ('Enter_ReviewID', 'Enter_OrgID', 'Enter_ItemID', 'Enter_Review','Enter_SentimentalScore');
 
-INSERT INTO Ratings (Rating_ID, Item_ID, Rating) 
-VALUES ('Enter_RatingID', 'Enter_ItemID', 'Enter_Rating');
+INSERT INTO Ratings (Rating_ID, Org_ID, Item_ID, Rating) 
+VALUES ('Enter_RatingID', 'Enter_OrgID', 'Enter_ItemID', 'Enter_Rating');
 
-INSERT INTO Aggregate_Ratings (Item_ID, Rating) 
-VALUES ('Enter_ItemID', 'Enter_Rating');
+INSERT INTO Aggregate_Ratings (Item_ID, Org_ID, Rating_Score, Review_Score, Combined_Score) 
+VALUES ('Enter_ItemID','Enter_OrgID','Enter_RatingScore','Enter_ReviewScore','Enter_CombinedScore');
 
-INSERT INTO Sentimental_Scores (Review_ID, Sentimental_Score) 
-VALUES ('Enter_ReviewID', 'Enter_SentimentalScore');
+INSERT INTO Rankings (Item_ID, Org_ID, Weighted_Score) 
+VALUES ('Enter_ItemID','Enter_OrgID', 'Enter_WeightedScore');
 
 
